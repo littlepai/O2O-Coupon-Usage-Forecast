@@ -1,27 +1,27 @@
--- Êı¾İ¼¯»®·Ö:
---                    Ô¤²âÇø¼ä£¨label´°£©          ÌØÕ÷Çø¼ä£¨feature´°£©                                                
+-- æ•°æ®é›†åˆ’åˆ†:
+--                    é¢„æµ‹åŒºé—´ï¼ˆlabelçª—ï¼‰          ç‰¹å¾åŒºé—´ï¼ˆfeatureçª—ï¼‰                                                
 --           dateset3: 20160701~20160731 ,features3 from 20160315~20160630
 --           dateset2: 20160515~20160615 ,features2 from 20160201~20160514  
 --           dateset1: 20160414~20160514 ,features1 from 20160101~20160413        
 
--- off-line±íÌáÈ¡µÄÌØÕ÷ 
+-- off-lineè¡¨æå–çš„ç‰¹å¾ 
 -- 1.merchant related: 
 --      sales_use_coupon. total_coupon
 --       transfer_rate = sales_use_coupon/total_coupon.
 --       merchant_avg_distance,merchant_min_distance,merchant_max_distance of those use coupon 
 --       total_sales.  coupon_rate = sales_use_coupon/total_sales.  
 
---       ĞÂÌí¼Ó£º
---       Ïû·Ñ¹ı¸ÃÉÌ¼ÒµÄ²»Í¬ÓÃ»§ÊıÁ¿   merchant_user_buy_count
+--       æ–°æ·»åŠ ï¼š
+--       æ¶ˆè´¹è¿‡è¯¥å•†å®¶çš„ä¸åŒç”¨æˆ·æ•°é‡   merchant_user_buy_count
        
 -- 2.coupon related: 
 --       discount_rate. discount_man. discount_jian. is_man_jian
 --       day_of_week,day_of_month. (date_received)
 
---       ĞÂÌí¼Ó£º£¨label´°ÀïµÄcouponÔÚÌØÕ÷´°ÓĞ³öÏÖ£¬Ó¦ÌáÈ¡Ïà¹ØÌØÕ÷£©
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞ±»Ïû·Ñ¹ıµÄÊıÄ¿  label_coupon_feature_buy_count
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞ±»ÁìÈ¡¹ıµÄÊıÄ¿  label_coupon_feature_receive_count
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞµÄºËÏúÂÊ  label_coupon_feature_rate = label_coupon_feature_buy_count/label_coupon_feature_receive_count
+--       æ–°æ·»åŠ ï¼šï¼ˆlabelçª—é‡Œçš„couponåœ¨ç‰¹å¾çª—æœ‰å‡ºç°ï¼Œåº”æå–ç›¸å…³ç‰¹å¾ï¼‰
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­è¢«æ¶ˆè´¹è¿‡çš„æ•°ç›®  label_coupon_feature_buy_count
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­è¢«é¢†å–è¿‡çš„æ•°ç›®  label_coupon_feature_receive_count
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­çš„æ ¸é”€ç‡  label_coupon_feature_rate = label_coupon_feature_buy_count/label_coupon_feature_receive_count
       
 -- 3.user related: 
 --       distance. 
@@ -39,7 +39,7 @@
 --       user_merchant_rate = user_merchant_buy_total/user_merchant_any
      
 
--- 5. other feature:£¨label ´°ÌáÈ¡µÄÌØÕ÷£©
+-- 5. other feature:ï¼ˆlabel çª—æå–çš„ç‰¹å¾ï¼‰
 --       this_month_user_receive_all_coupon_count
 --       this_month_user_receive_same_coupon_count
 --       this_month_user_receive_same_coupon_lastone
@@ -47,31 +47,31 @@
 --       this_day_user_receive_all_coupon_count
 --       this_day_user_receive_same_coupon_count
 
---       ĞÂÌí¼Ó£º
+--       æ–°æ·»åŠ ï¼š
 --       day_gap_before, day_gap_after  (receive the same coupon)
---       ÉÌ¼ÒÓĞ½»¼¯µÄÓÃ»§ÊıÄ¿ label_merchant_user_count
---       ÉÌ¼Ò·¢³öµÄËùÓĞÓÅ»İÈ¯ÊıÄ¿  label_merchant_coupon_count
---       ÉÌ¼Ò·¢³öµÄËùÓĞÓÅ»İÈ¯ÖÖÀàÊıÄ¿  label_merchant_coupon_type_count
---       ÓÃ»§ÁìÈ¡¸ÃÉÌ¼ÒµÄËùÓĞÓÅ»İÈ¯ÊıÄ¿  label_user_merchant_coupon_count
---       ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙ¸ÃÓÅ»İÈ¯   label_same_coupon_count_later
---       ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙÓÅ»İÈ¯     label_coupon_count_later
---       ÓÃ»§ÓĞ½»¼¯µÄÉÌ¼ÒÊıÄ¿     label_user_merchant_count
+--       å•†å®¶æœ‰äº¤é›†çš„ç”¨æˆ·æ•°ç›® label_merchant_user_count
+--       å•†å®¶å‘å‡ºçš„æ‰€æœ‰ä¼˜æƒ åˆ¸æ•°ç›®  label_merchant_coupon_count
+--       å•†å®¶å‘å‡ºçš„æ‰€æœ‰ä¼˜æƒ åˆ¸ç§ç±»æ•°ç›®  label_merchant_coupon_type_count
+--       ç”¨æˆ·é¢†å–è¯¥å•†å®¶çš„æ‰€æœ‰ä¼˜æƒ åˆ¸æ•°ç›®  label_user_merchant_coupon_count
+--       ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘è¯¥ä¼˜æƒ åˆ¸   label_same_coupon_count_later
+--       ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘ä¼˜æƒ åˆ¸     label_coupon_count_later
+--       ç”¨æˆ·æœ‰äº¤é›†çš„å•†å®¶æ•°ç›®     label_user_merchant_count
 
 
 -- 6. user_coupon:
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§ÁìÈ¡¹ı¸Ãcoupon¼¸´Î   label_user_coupon_feature_receive_count
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§ÓÃ¸ÃcouponÏû·Ñ¹ı¼¸´Î   label_user_coupon_feature_buy_count
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§¶Ô¸ÃcouponµÄºËÏúÂÊ   label_user_coupon_feature_rate = label_user_coupon_feature_buy_count/label_user_coupon_feature_receive_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·é¢†å–è¿‡è¯¥couponå‡ æ¬¡   label_user_coupon_feature_receive_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·ç”¨è¯¥couponæ¶ˆè´¹è¿‡å‡ æ¬¡   label_user_coupon_feature_buy_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·å¯¹è¯¥couponçš„æ ¸é”€ç‡   label_user_coupon_feature_rate = label_user_coupon_feature_buy_count/label_user_coupon_feature_receive_count
 
 
 
--- 7. online±íµÄÌØÕ÷£¨¶¼ÊÇÓÃ»§Ïà¹Ø£©
---       ÓÃ»§ÏßÉÏ¹ºÂò×Ü´ÎÊı  online_buy_total
---       ÓÃ»§ÏßÉÏÓÃcoupon¹ºÂòµÄ×Ü´ÎÊı online_buy_use_coupon
---       ÓÃ»§ÏßÉÏÓÃfixed¹ºÂòµÄ×Ü´ÎÊı  online_buy_use_fixed
---       ÓÃ»§ÏßÉÏÊÕµ½µÄcoupon×Ü´ÎÊı   online_coupon_received
---       ÓÃ»§ÏßÉÏÓĞ·¢Éú¹ºÂòµÄmerchant¸öÊı  online_buy_merchant_count
---       ÓÃ»§ÏßÉÏÓĞactionµÄmerchant¸öÊı      online_action_merchant_count
+-- 7. onlineè¡¨çš„ç‰¹å¾ï¼ˆéƒ½æ˜¯ç”¨æˆ·ç›¸å…³ï¼‰
+--       ç”¨æˆ·çº¿ä¸Šè´­ä¹°æ€»æ¬¡æ•°  online_buy_total
+--       ç”¨æˆ·çº¿ä¸Šç”¨couponè´­ä¹°çš„æ€»æ¬¡æ•° online_buy_use_coupon
+--       ç”¨æˆ·çº¿ä¸Šç”¨fixedè´­ä¹°çš„æ€»æ¬¡æ•°  online_buy_use_fixed
+--       ç”¨æˆ·çº¿ä¸Šæ”¶åˆ°çš„couponæ€»æ¬¡æ•°   online_coupon_received
+--       ç”¨æˆ·çº¿ä¸Šæœ‰å‘ç”Ÿè´­ä¹°çš„merchantä¸ªæ•°  online_buy_merchant_count
+--       ç”¨æˆ·çº¿ä¸Šæœ‰actionçš„merchantä¸ªæ•°      online_action_merchant_count
 --       online_buy_use_coupon_fixed = online_buy_use_coupon+online_buy_use_fixed
 --       online_buy_use_coupon_rate = online_buy_use_coupon/online_buy_total
 --       online_buy_use_fixed_rate = online_buy_use_fixed/online_buy_total 
@@ -80,7 +80,7 @@
 
 -- #################################################################################
 
--- »®·ÖÊı¾İ¼¯
+-- åˆ’åˆ†æ•°æ®é›†
 create table if not exists wepon_dataset3 as select * from prediction_stage2;
 create table if not exists wepon_feature3 as select * from train_offline_stage2 
 where ("20160315"<=date_pay and date_pay<="20160630") or (date_pay="null" and "20160315"<=date_received and date_received<="20160630");
@@ -101,13 +101,13 @@ where ("20160101"<=date_pay and date_pay<="20160413") or (date_pay="null" and "2
 
 
 
--- 7. online±íµÄÌØÕ÷£¨¶¼ÊÇÓÃ»§Ïà¹Ø£©
---       ÓÃ»§ÏßÉÏ¹ºÂò×Ü´ÎÊı  online_buy_total
---       ÓÃ»§ÏßÉÏÓÃcoupon¹ºÂòµÄ×Ü´ÎÊı online_buy_use_coupon
---       ÓÃ»§ÏßÉÏÓÃfixed¹ºÂòµÄ×Ü´ÎÊı  online_buy_use_fixed
---       ÓÃ»§ÏßÉÏÊÕµ½µÄcoupon×Ü´ÎÊı   online_coupon_received
---       ÓÃ»§ÏßÉÏÓĞ·¢Éú¹ºÂòµÄmerchant¸öÊı  online_buy_merchant_count
---       ÓÃ»§ÏßÉÏÓĞactionµÄmerchant¸öÊı      online_action_merchant_count
+-- 7. onlineè¡¨çš„ç‰¹å¾ï¼ˆéƒ½æ˜¯ç”¨æˆ·ç›¸å…³ï¼‰
+--       ç”¨æˆ·çº¿ä¸Šè´­ä¹°æ€»æ¬¡æ•°  online_buy_total
+--       ç”¨æˆ·çº¿ä¸Šç”¨couponè´­ä¹°çš„æ€»æ¬¡æ•° online_buy_use_coupon
+--       ç”¨æˆ·çº¿ä¸Šç”¨fixedè´­ä¹°çš„æ€»æ¬¡æ•°  online_buy_use_fixed
+--       ç”¨æˆ·çº¿ä¸Šæ”¶åˆ°çš„couponæ€»æ¬¡æ•°   online_coupon_received
+--       ç”¨æˆ·çº¿ä¸Šæœ‰å‘ç”Ÿè´­ä¹°çš„merchantä¸ªæ•°  online_buy_merchant_count
+--       ç”¨æˆ·çº¿ä¸Šæœ‰actionçš„merchantä¸ªæ•°      online_action_merchant_count
 --       online_buy_use_coupon_fixed = online_buy_use_coupon+online_buy_use_fixed
 --       online_buy_use_coupon_rate = online_buy_use_coupon/online_buy_total
 --       online_buy_use_fixed_rate = online_buy_use_fixed/online_buy_total 
@@ -365,20 +365,20 @@ from
 
 	
 
--- 5. other feature:£¨label ´°¿ÚÌáÈ¡µÄÌØÕ÷£©
+-- 5. other feature:ï¼ˆlabel çª—å£æå–çš„ç‰¹å¾ï¼‰
 --       this_month_user_receive_all_coupon_count
 --       this_month_user_receive_same_coupon_count
 --       this_day_user_receive_all_coupon_count
 --       this_day_user_receive_same_coupon_count
 --       this_month_user_receive_same_coupon_lastone
 --       this_month_user_receive_same_coupon_firstone
---       ÉÌ¼ÒÓĞ½»¼¯µÄÓÃ»§ÊıÄ¿ label_merchant_user_count
---       ÓÃ»§ÓĞ½»¼¯µÄÉÌ¼ÒÊıÄ¿     label_user_merchant_count
---       ÉÌ¼Ò·¢³öµÄËùÓĞÓÅ»İÈ¯ÊıÄ¿  label_merchant_coupon_count
---       ÉÌ¼Ò·¢³öµÄËùÓĞÓÅ»İÈ¯ÖÖÀàÊıÄ¿  label_merchant_coupon_type_count
---       ÓÃ»§ÁìÈ¡¸ÃÉÌ¼ÒµÄËùÓĞÓÅ»İÈ¯ÊıÄ¿  label_user_merchant_coupon_count
---       ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙ¸ÃÓÅ»İÈ¯   label_same_coupon_count_later
---       ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙÓÅ»İÈ¯     label_coupon_count_later
+--       å•†å®¶æœ‰äº¤é›†çš„ç”¨æˆ·æ•°ç›® label_merchant_user_count
+--       ç”¨æˆ·æœ‰äº¤é›†çš„å•†å®¶æ•°ç›®     label_user_merchant_count
+--       å•†å®¶å‘å‡ºçš„æ‰€æœ‰ä¼˜æƒ åˆ¸æ•°ç›®  label_merchant_coupon_count
+--       å•†å®¶å‘å‡ºçš„æ‰€æœ‰ä¼˜æƒ åˆ¸ç§ç±»æ•°ç›®  label_merchant_coupon_type_count
+--       ç”¨æˆ·é¢†å–è¯¥å•†å®¶çš„æ‰€æœ‰ä¼˜æƒ åˆ¸æ•°ç›®  label_user_merchant_coupon_count
+--       ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘è¯¥ä¼˜æƒ åˆ¸   label_same_coupon_count_later
+--       ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘ä¼˜æƒ åˆ¸     label_coupon_count_later
 
 
 -- ##############  for dataset3  ################### 
@@ -416,7 +416,7 @@ select user_id,coupon_id,max(date_received) as max_date_received, min(date_recei
   select a.user_id,a.coupon_id,a.date_received from
 	(select user_id,coupon_id,date_received from wepon_dataset3)a
 	join
-	(select user_id,coupon_id from wepon_d3_f5_t2 where this_month_user_receive_same_coupon_count>1)b --ÁìÈ¡¹ıÍ¬ÕÅÓÅ»İ¾í¶à´ÎµÄ
+	(select user_id,coupon_id from wepon_d3_f5_t2 where this_month_user_receive_same_coupon_count>1)b --é¢†å–è¿‡åŒå¼ ä¼˜æƒ å·å¤šæ¬¡çš„
   on a.user_id=b.user_id and a.coupon_id=b.coupon_id
 )t 
 group by user_id,coupon_id;
@@ -425,10 +425,10 @@ group by user_id,coupon_id;
 create table wepon_d3_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
-	        when max_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when max_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_lastone,
 		case when date_received=min_date_received then 1
-	        when min_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when min_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_firstone
 from
 (
@@ -466,7 +466,7 @@ select user_id,count(*) as label_user_merchant_coupon_count from
 group by user_id;
 
 
-create table wepon_d3_f5_t11 as    -- ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙ¸ÃÓÅ»İÈ¯   label_same_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬ÓÅ»İ¾í¡±È¥ÖØ£©
+create table wepon_d3_f5_t11 as    -- ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘è¯¥ä¼˜æƒ åˆ¸   label_same_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒä¼˜æƒ å·â€å»é‡ï¼‰
 select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_same_coupon_count_later from
 (
   select user_id,coupon_id,date_received,row_number() over (partition by user_id,coupon_id order by date_received desc) as label_same_coupon_count_later from 
@@ -476,7 +476,7 @@ select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_
 )tt;
 
 
-create table wepon_d3_f5_t12 as    --ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙÓÅ»İÈ¯     label_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬Ìì¡±È¥ÖØ£©
+create table wepon_d3_f5_t12 as    --ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘ä¼˜æƒ åˆ¸     label_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒå¤©â€å»é‡ï¼‰
 select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_later from
 (
   select user_id,date_received,row_number() over (partition by user_id order by date_received desc) as label_coupon_count_later from 
@@ -487,7 +487,7 @@ select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_la
  
 
 
--- ºÏ²¢¸÷¸öÌØÕ÷
+-- åˆå¹¶å„ä¸ªç‰¹å¾
 create table wepon_d3_f5 as
 select u.*,v.label_coupon_count_later from
 (
@@ -569,7 +569,7 @@ select user_id,coupon_id,max(date_received) as max_date_received, min(date_recei
   select a.user_id,a.coupon_id,a.date_received from
 	(select user_id,coupon_id,date_received from wepon_dataset2)a
 	join
-	(select user_id,coupon_id from wepon_d2_f5_t2 where this_month_user_receive_same_coupon_count>1)b --ÁìÈ¡¹ıÍ¬ÕÅÓÅ»İ¾í¶à´ÎµÄ
+	(select user_id,coupon_id from wepon_d2_f5_t2 where this_month_user_receive_same_coupon_count>1)b --é¢†å–è¿‡åŒå¼ ä¼˜æƒ å·å¤šæ¬¡çš„
   on a.user_id=b.user_id and a.coupon_id=b.coupon_id
 )t 
 group by user_id,coupon_id;
@@ -578,10 +578,10 @@ group by user_id,coupon_id;
 create table wepon_d2_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
-	        when max_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when max_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_lastone,
 		case when date_received=min_date_received then 1
-	        when min_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when min_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_firstone
 from
 (
@@ -619,7 +619,7 @@ select user_id,count(*) as label_user_merchant_coupon_count from
 group by user_id;
 
 
-create table wepon_d2_f5_t11 as    -- ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙ¸ÃÓÅ»İÈ¯   label_same_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬ÓÅ»İ¾í¡±È¥ÖØ£©
+create table wepon_d2_f5_t11 as    -- ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘è¯¥ä¼˜æƒ åˆ¸   label_same_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒä¼˜æƒ å·â€å»é‡ï¼‰
 select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_same_coupon_count_later from
 (
   select user_id,coupon_id,date_received,row_number() over (partition by user_id,coupon_id order by date_received desc) as label_same_coupon_count_later from 
@@ -629,7 +629,7 @@ select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_
 )tt;
 
 
-create table wepon_d2_f5_t12 as    --ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙÓÅ»İÈ¯     label_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬Ìì¡±È¥ÖØ£©
+create table wepon_d2_f5_t12 as    --ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘ä¼˜æƒ åˆ¸     label_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒå¤©â€å»é‡ï¼‰
 select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_later from
 (
   select user_id,date_received,row_number() over (partition by user_id order by date_received desc) as label_coupon_count_later from 
@@ -640,7 +640,7 @@ select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_la
  
 
 
--- ºÏ²¢¸÷¸öÌØÕ÷
+-- åˆå¹¶å„ä¸ªç‰¹å¾
 create table wepon_d2_f5 as
 select u.*,v.label_coupon_count_later from
 (
@@ -723,7 +723,7 @@ select user_id,coupon_id,max(date_received) as max_date_received, min(date_recei
   select a.user_id,a.coupon_id,a.date_received from
 	(select user_id,coupon_id,date_received from wepon_dataset1)a
 	join
-	(select user_id,coupon_id from wepon_d1_f5_t2 where this_month_user_receive_same_coupon_count>1)b --ÁìÈ¡¹ıÍ¬ÕÅÓÅ»İ¾í¶à´ÎµÄ
+	(select user_id,coupon_id from wepon_d1_f5_t2 where this_month_user_receive_same_coupon_count>1)b --é¢†å–è¿‡åŒå¼ ä¼˜æƒ å·å¤šæ¬¡çš„
   on a.user_id=b.user_id and a.coupon_id=b.coupon_id
 )t 
 group by user_id,coupon_id;
@@ -733,10 +733,10 @@ group by user_id,coupon_id;
 create table wepon_d1_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
-	        when max_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when max_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_lastone,
 		case when date_received=min_date_received then 1
-	        when min_date_received is null then -1  -- Ö»ÁìÈ¡¹ıÒ»´ÎµÄ
+	        when min_date_received is null then -1  -- åªé¢†å–è¿‡ä¸€æ¬¡çš„
 			else 0 end as this_month_user_receive_same_coupon_firstone
 from
 (
@@ -774,7 +774,7 @@ select user_id,count(*) as label_user_merchant_coupon_count from
 group by user_id;
 
 
-create table wepon_d1_f5_t11 as    -- ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙ¸ÃÓÅ»İÈ¯   label_same_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬ÓÅ»İ¾í¡±È¥ÖØ£©
+create table wepon_d1_f5_t11 as    -- ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘è¯¥ä¼˜æƒ åˆ¸   label_same_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒä¼˜æƒ å·â€å»é‡ï¼‰
 select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_same_coupon_count_later from
 (
   select user_id,coupon_id,date_received,row_number() over (partition by user_id,coupon_id order by date_received desc) as label_same_coupon_count_later from 
@@ -784,7 +784,7 @@ select user_id,coupon_id,date_received,label_same_coupon_count_later-1 as label_
 )tt;
 
 
-create table wepon_d1_f5_t12 as    --ÓÃ»§ÔÚ´Ë´ÎÓÅ»İÈ¯Ö®ºó»¹ÁìÈ¡ÁË¶àÉÙÓÅ»İÈ¯     label_coupon_count_later  £¨ÊµÏÖÊ±£¬ÏÈ¶ÔÃ¿Ìì¡°Í¬ÓÃ»§Í¬Ìì¡±È¥ÖØ£©
+create table wepon_d1_f5_t12 as    --ç”¨æˆ·åœ¨æ­¤æ¬¡ä¼˜æƒ åˆ¸ä¹‹åè¿˜é¢†å–äº†å¤šå°‘ä¼˜æƒ åˆ¸     label_coupon_count_later  ï¼ˆå®ç°æ—¶ï¼Œå…ˆå¯¹æ¯å¤©â€œåŒç”¨æˆ·åŒå¤©â€å»é‡ï¼‰
 select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_later from
 (
   select user_id,date_received,row_number() over (partition by user_id order by date_received desc) as label_coupon_count_later from 
@@ -795,7 +795,7 @@ select user_id,date_received,label_coupon_count_later-1 as label_coupon_count_la
  
 
 
--- ºÏ²¢¸÷¸öÌØÕ÷
+-- åˆå¹¶å„ä¸ªç‰¹å¾
 create table wepon_d1_f5 as
 select u.*,v.label_coupon_count_later from
 (
@@ -848,9 +848,9 @@ on u.user_id=v.user_id and u.date_received=v.date_received;
 -- 2.coupon related: 
 --       discount_rate. discount_man. discount_jian. is_man_jian
 --       day_of_week,day_of_month. (date_received)
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞ±»Ïû·Ñ¹ıµÄÊıÄ¿  label_coupon_feature_buy_count
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞ±»ÁìÈ¡¹ıµÄÊıÄ¿  label_coupon_feature_receive_count
---             label´°ÀïµÄcoupon£¬ÔÚÌØÕ÷´°ÖĞµÄºËÏúÂÊ  label_coupon_feature_rate = label_coupon_feature_buy_count/label_coupon_feature_receive_count
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­è¢«æ¶ˆè´¹è¿‡çš„æ•°ç›®  label_coupon_feature_buy_count
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­è¢«é¢†å–è¿‡çš„æ•°ç›®  label_coupon_feature_receive_count
+--             labelçª—é‡Œçš„couponï¼Œåœ¨ç‰¹å¾çª—ä¸­çš„æ ¸é”€ç‡  label_coupon_feature_rate = label_coupon_feature_buy_count/label_coupon_feature_receive_count
 
 
 -- ###################   for dataset3  ################### 
@@ -1037,7 +1037,7 @@ on e.coupon_id=f.coupon_id;
 --       transform_rate = sales_use_coupon/total_coupon.
 --       merchant_avg_distance,merchant_min_distance,merchant_max_distance of those use coupon 
 --       total_sales.  coupon_rate = sales_use_coupon/total_sales.  
---       Ïû·Ñ¹ı¸ÃÉÌ¼ÒµÄ²»Í¬ÓÃ»§ÊıÁ¿   merchant_user_buy_count
+--       æ¶ˆè´¹è¿‡è¯¥å•†å®¶çš„ä¸åŒç”¨æˆ·æ•°é‡   merchant_user_buy_count
 
 -- ##############  for dataset3  ################### 
 create table wepon_merchant3 as select merchant_id,user_id,coupon_id,distance,date_received,date_pay from wepon_feature3;
@@ -1823,9 +1823,9 @@ from
 
 
 -- 6. user_coupon:
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§ÁìÈ¡¹ı¸Ãcoupon¼¸´Î   label_user_coupon_feature_receive_count
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§ÓÃ¸ÃcouponÏû·Ñ¹ı¼¸´Î   label_user_coupon_feature_buy_count
---       ¶Ôlabel´°ÀïµÄuser_coupon£¬ÌØÕ÷´°ÀïÓÃ»§¶Ô¸ÃcouponµÄºËÏúÂÊ   label_user_coupon_feature_rate = label_user_coupon_feature_buy_count/label_user_coupon_feature_receive_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·é¢†å–è¿‡è¯¥couponå‡ æ¬¡   label_user_coupon_feature_receive_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·ç”¨è¯¥couponæ¶ˆè´¹è¿‡å‡ æ¬¡   label_user_coupon_feature_buy_count
+--       å¯¹labelçª—é‡Œçš„user_couponï¼Œç‰¹å¾çª—é‡Œç”¨æˆ·å¯¹è¯¥couponçš„æ ¸é”€ç‡   label_user_coupon_feature_rate = label_user_coupon_feature_buy_count/label_user_coupon_feature_receive_count
 
 -- ###################   for dataset3  ################### 
 create table wepon_d3_f6_t1 as
@@ -1906,7 +1906,7 @@ on a.user_id=b.user_id and a.coupon_id=b.coupon_id;
 
 
 
--- ##############################################  ºÏ²¢¸÷ÖÖÌØÕ÷ÎÄ¼ş£¬Éú³ÉÑµÁ·¼¯²âÊÔ¼¯  ######################################
+-- ##############################################  åˆå¹¶å„ç§ç‰¹å¾æ–‡ä»¶ï¼Œç”Ÿæˆè®­ç»ƒé›†æµ‹è¯•é›†  ######################################
 create table wepon_d3 as
 select t.*, case day_of_week when 0 then 1 else 0 end as weekday1,case day_of_week when 1 then 1 else 0 end as weekday2,
             case day_of_week when 2 then 1 else 0 end as weekday3,case day_of_week when 3 then 1 else 0 end as weekday4,
