@@ -31,7 +31,7 @@ create table train_offline_stage2
   merchant_id varchar2(100),
   coupon_id varchar2(100),
   discount_rate varchar2(100),
-  distance varchar2(100),
+  distance number,
   date_received varchar2(100),
   date_pay varchar2(100)
 );

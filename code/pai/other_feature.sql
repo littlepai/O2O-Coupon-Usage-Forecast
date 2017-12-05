@@ -65,10 +65,10 @@ create table wepon_d3_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
           when max_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_last,
+      else 0 end as mu_same_coupon_last,
     case when date_received=min_date_received then 1
           when min_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_first
+      else 0 end as mu_same_coupon_first
 from
 (
   select a.user_id,a.coupon_id,a.merchant_id,a.date_received,b.max_date_received,b.min_date_received
@@ -234,10 +234,10 @@ create table wepon_d2_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
           when max_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_last,
+      else 0 end as mu_same_coupon_last,
     case when date_received=min_date_received then 1
           when min_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_first
+      else 0 end as mu_same_coupon_first
 from
 (
   select a.user_id,a.coupon_id,a.merchant_id,a.date_received,b.max_date_received,b.min_date_received
@@ -403,10 +403,10 @@ create table wepon_d1_f5_t5 as
 select user_id,coupon_id,merchant_id,date_received,
        case when date_received=max_date_received then 1
           when max_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_last,
+      else 0 end as mu_same_coupon_last,
     case when date_received=min_date_received then 1
           when min_date_received is null then -1  -- 只领取过一次的
-      else 0 end as du_same_coupon_first
+      else 0 end as mu_same_coupon_first
 from
 (
   select a.user_id,a.coupon_id,a.merchant_id,a.date_received,b.max_date_received,b.min_date_received
