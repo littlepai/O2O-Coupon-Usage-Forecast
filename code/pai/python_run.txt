@@ -1,0 +1,111 @@
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn import cross_validation, metrics
+from sklearn.grid_search import GridSearchCV
+import cx_Oracle as cx
+
+gbm0 = GradientBoostingClassifier(random_state=10)
+conn=cx.connect('coupon/coupon@pai_db')
+
+x_columns = ['DAYS_DISTANCE',
+ 'DAY_OF_MONTH',
+ 'IS_MAN_JIAN',
+ 'DISTANCE',
+ 'DISCOUNT_MAN',
+ 'DISCOUNT_JIAN',
+ 'DISCOUNT_RATE',
+ 'COUPON_COUNT',
+ 'LABEL_COUPON_FEATURE_REC',
+ 'LABEL_COUPON_FEATURE_BUY_COUNT',
+ 'LABEL_COUPON_FEATURE_RATE',
+ 'DISTINCT_COUPON_COUNT',
+ 'MERCHANT_AVG_DISTANCE',
+ 'MERCHANT_MEDIAN_DISTANCE',
+ 'MERCHANT_MAX_DISTANCE',
+ 'MERCHANT_USER_BUY_COUNT',
+ 'MERCHANT_MIN_DISTANCE',
+ 'SALES_USE_COUPON',
+ 'TRANSFORM_RATE',
+ 'COUPON_RATE',
+ 'TOTAL_COUPON',
+ 'TOTAL_SALES',
+ 'USER_AVG_DISTANCE',
+ 'USER_MIN_DISTANCE',
+ 'USER_MAX_DISTANCE',
+ 'USER_MEDIAN_DISTANCE',
+ 'AVG_DIFF_DATE_DATERECEIVED',
+ 'MIN_DIFF_DATE_DATERECEIVED',
+ 'MAX_DIFF_DATE_DATERECEIVED',
+ 'BUY_USE_COUPON',
+ 'BUY_USE_COUPON_RATE',
+ 'USER_COUPON_TRANSFORM_RATE',
+ 'COUNT_MERCHANT',
+ 'BUY_TOTAL',
+ 'COUPON_RECEIVED',
+ 'USER_MERCHANT_BUY_TOTAL',
+ 'USER_MERCHANT_RECEIVED',
+ 'USER_MERCHANT_ANY',
+ 'USER_MERCHANT_BUY_USE_COUPON',
+ 'USER_MERCHANT_BUY_COMMON',
+ 'COUPON_TRANSFORM_RATE',
+ 'USER_MERCHANT_COUPON_BUY_RATE',
+ 'USER_MERCHANT_COMMON_BUY_RATE',
+ 'USER_MERCHANT_RATE',
+ 'MU_ALL_COUPON',
+ 'MU_SAME_COUPON',
+ 'DU_ALL_COUPON',
+ 'DU_SAME_COUPON',
+ 'MU_SAME_COUPON_LAST',
+ 'MU_SAME_COUPON_FIRST',
+ 'LABEL_MERCHANT_USER_COUNT',
+ 'LABEL_USER_MERCHANT_COUNT',
+ 'LABEL_MERCHANT_COUPON_COUNT',
+ 'LABEL_MERCHANT_COUPON_TYPE',
+ 'LABEL_USER_MERCHANT_COUPON',
+ 'LABEL_SAME_COUPON_COUNT_LATER',
+ 'LABEL_COUPON_COUNT_LATER',
+ 'LABEL_USER_COUPON_FEATURE_REC',
+ 'LABEL_USER_CP_FEATURE_BUY',
+ 'LABEL_USER_COUPON_FEATURE_RATE',
+ 'WEEKDAY1',
+ 'WEEKDAY2',
+ 'WEEKDAY3',
+ 'WEEKDAY4',
+ 'WEEKDAY5',
+ 'WEEKDAY6',
+ 'WEEKDAY7']
+target='LABEL'
+
+sql_code1='select * from wepon_d1'
+df1=pd.read_sql(sql_code1, conn)
+X1=df1[x_columns]
+y1=df1[target]
+X1=X1.applymap(lambda x: 0 if x is None else x)
+X1=X1.applymap(lambda x: 0 if np.isnan(x) else x)
+
+
+sql_code2='select * from wepon_d2'
+df2=pd.read_sql(sql_code2, conn)
+X2=df2[x_columns]
+y2=df2[target]
+X2=X2.applymap(lambda x: 0 if x is None else x)
+X2=X2.applymap(lambda x: 0 if np.isnan(x) else x)
+
+
+sql_code3='select * from wepon_d3'
+df3=pd.read_sql(sql_code3, conn)
+X3=df3[x_columns]
+X3=X3.applymap(lambda x: 0 if x is None else x)
+X3=X3.applymap(lambda x: 0 if np.isnan(x) else x)
+
+
+gbm0.fit(X1,y1)
+y2_pred = gbm0.predict(X2)
+y2_predprob = gbm0.predict_proba(X2)[:,1]
+print ("Accuracy : %.4g" % metrics.accuracy_score(y2.values, y2_pred))
+print ("AUC Score (Train): %f" % metrics.roc_auc_score(y2, y2_predprob))
+
+gbm0.fit(X2,y2)
+y3_pred = gbm0.predict(X3)
+y3_predprob = gbm0.predict_proba(X3)[:,1]
