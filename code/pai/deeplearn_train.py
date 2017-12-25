@@ -4,6 +4,7 @@ import math
 import tensorflow as tf
 from tensorflow.python.training import moving_averages
 import cx_Oracle as cx
+import smote
 
 x_columns = ['DAYS_DISTANCE',
  'DAY_OF_MONTH',
@@ -108,13 +109,23 @@ class O2Omodel():
 		'b3':tf.get_variable('b3', shape=(32), dtype=tf.float32, initializer=tf.contrib.layers.xavier_initializer()),
 		'b4':tf.get_variable('b4', shape=(2), dtype=tf.float32, initializer=tf.contrib.layers.xavier_initializer())
 		}
-
-		x=tf.matmul(self.inputs, w['w1'])+b['b1']
+		
+		x=self._batch_norm('bn1', self.inputs)
+		x=tf.matmul(x, w['w1'])+b['b1']
 		x=self._leaky_relu(x, 0.01)
+		x=tf.nn.dropout(x, keep_prob=0.75)
+		
+		x=self._batch_norm('bn2', x)
 		x=tf.matmul(x, w['w2'])+b['b2']
 		x=self._leaky_relu(x, 0.01)
+		x=tf.nn.dropout(x, keep_prob=0.75)
+		
+		x=self._batch_norm('bn3', x)
 		x=tf.matmul(x, w['w3'])+b['b3']
 		x=self._leaky_relu(x, 0.01)
+		x=tf.nn.dropout(x, keep_prob=0.75)
+		
+		x=self._batch_norm('bn4', x)
 		self.x=tf.matmul(x, w['w4'])+b['b4']
 		
 		
@@ -193,21 +204,36 @@ model=O2Omodel()
 model.build_graph()
 
 class DataIterator():
-	def __init__(self, sql_code='select * from wepon_d1'):
+	def __init__(self, sql_code='select * from wepon_d1', smote_pro=True, smote_k=5):
 		conn=cx.connect('coupon/coupon@pai_db')
+		self.sql_code=sql_code
 		df=pd.read_sql(sql_code, conn)
 		X1=df[x_columns]
 		y1=df[target]
+		s_label_count=[(i,y1[y1==i].count()) for i in y1.unique()]
+		y1=np.asarray(y1)
 
 		X1=X1.applymap(lambda x: 0 if x is None else x)
 		X1=X1.applymap(lambda x: 0 if np.isnan(x) else x)
 		X1=X1.applymap(lambda x: x*1.0)
+		datas=np.asanyarray(X1, np.float32)
 
-		self.datas=np.asanyarray(X1, np.float32)
+		if smote_pro:
+			s_label_count.sort(key=lambda x:x[1], reverse=True)
+			_, max_label_count=s_label_count[0]
+			for s_label, s_count in s_label_count[1:]:
+				s=smote.Smote(N=math.ceil(max_label_count/s_count), k=smote_k)
+				smotedata=s.fit_transform(np.asarray(datas[y1==s_label]))
+				datas=np.vstack([datas,smotedata[:max_label_count-s_count]])
+				add_y1=np.zeros(max_label_count-s_count, dtype='int32')
+				add_y1[:]=s_label
+				y1=np.hstack([y1, add_y1])
+		
+		self.datas=datas
 		self.labels=np.zeros([len(y1), 2])
 		self.labels[:,0]=np.where(y1==0,1,0)
 		self.labels[:,1]=np.where(y1==1,1,0)
-	
+
 	@property
 	def size(self):
 		return len(self.labels)
@@ -229,10 +255,11 @@ def main(_):
 	sess.run(init)
 	data=DataIterator()
 	gen=data.gen_shuffle_batch(FLAGS.batch_size)
-	for i in range(10000):
-		
+	for i in range(100000):
 		inputs, labels=next(gen)
-		print(sess.run(model.train_ops, feed_dict={model.inputs:inputs, model.labels:labels}))
+		global_step, cost, *_ =sess.run(model.train_ops, feed_dict={model.inputs:inputs, model.labels:labels})
+		if global_step%100==0:
+			print(global_step, "------", cost)
 
 if __name__ == "__main__":
 	tf.app.run()
